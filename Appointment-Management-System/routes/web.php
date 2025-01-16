@@ -54,6 +54,11 @@ Route::get('/eventDetail/{id}',[App\Http\Controllers\eventController::class,'det
 
 Auth::routes();
 
+Route::post('/logout', function () {
+    Auth::logout();
+    return redirect('/');
+})->name('logout');
+
 Route::post('/joinEvent',[App\Http\Controllers\eventController::class,'addCart'])->name('joinEvent');
 
 /*  Route::get('/showEvent',[App\Http\Controllers\ProductController::class,'show'])->name('showEvent');

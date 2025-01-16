@@ -52,6 +52,13 @@
     @else
     
      <a href="" class="btn btn-success">My Cart<span class="badge bg-danger"></span></a>
+
+     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+    @csrf
+</form>
+<button type="button" class="btn btn-danger" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+    Logout
+</button>
    
     @endguest    
   </div>
