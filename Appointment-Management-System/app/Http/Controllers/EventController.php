@@ -19,7 +19,12 @@ class EventController extends Controller
     }
 
     public function home(){
-        return view('home');
+        $upcomingEvents = Event::where('start', '>=', now())
+            ->orderBy('start', 'asc')
+            ->limit(3)
+            ->get();
+
+        return view('home', compact('upcomingEvents'));
     }
 
     public function profile()

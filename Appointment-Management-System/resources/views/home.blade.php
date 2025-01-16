@@ -68,24 +68,27 @@
                 </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
-                @php
-                    $events = DB::table('events')
-                    ->where('id', Auth::id())
-                    ->orderBy('start', 'asc')
-                    ->limit(3)
-                    ->get();
-                @endphp
-                @foreach ($events as $event)
-            <tr>
-            <td class="px-6 py-4 whitespace-nowrap text-sm">{{ $event->name }}</td>
-            <td class="px-6 py-4 whitespace-nowrap text-sm">{{ $event->start }}</td>
-            <td class="px-6 py-4 whitespace-nowrap text-sm">{{ $event->time }}</td>
-            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                <a href="#" class="text-red-600 hover:text-red-900">Join</a>
-            </td>
-            </tr>
-        @endforeach
-
+                @foreach ($upcomingEvents as $event)
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap">{{ $event->name }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap">{{ $event->start}}</td>
+                            <td class="px-6 py-4 whitespace-nowrap">{{ $event->time }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                            @if (session()->has('joined_event_' . $event->id))
+                                <button class="btn btn-secondary" disabled>Joined</button>
+                            @else
+                            <form action="{{ route('joinEvent') }}" method="POST">
+                                @csrf
+                                <input type="hidden" name="event_id" value="{{ $event->id }}">
+                                @php
+                                    $isDisabled = $event->seat <= 0 ? 'disabled' : '';
+                                @endphp
+                                <button type="submit" class="text-red-600 hover:text-red-900" {{ $isDisabled }}> Join</button>
+                            </form>
+                            @endif                           
+                            </td>
+                        </tr>
+                    @endforeach
                     </tbody>
                 </table>
             </div>
