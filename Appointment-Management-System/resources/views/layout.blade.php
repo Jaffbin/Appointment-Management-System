@@ -14,7 +14,7 @@
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <img src="image/ME.jpg" class="rounded-circle" alt="Southern Online" width="30">&nbsp;
-  <a class="navbar-brand" href="#">MyEvent</a>
+  <a class="navbar-brand" href="{{route('home')}}">MyEvent</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -35,7 +35,7 @@
           <a class="dropdown-item" href="{{ route('addEvent') }}">Add Event</a>
           <a class="dropdown-item" href="{{route('showAllEvent')}}">All Event</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#{{ route('myEvent')}}">My Event</a>
+          <a class="dropdown-item" href="{{ route('myEvent')}}">My Event</a>
         </div>
       </li>      
     </ul>
@@ -45,16 +45,16 @@
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>&nbsp;
     
-    @guest
+    @auth
 
      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
     @csrf
 </form>
 <button type="button" class="btn btn-danger" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-    Logout
-</button>
-   
-    @endguest    
+        Logout
+     </button>
+    @endauth
+     
   </div>
 </nav>
 

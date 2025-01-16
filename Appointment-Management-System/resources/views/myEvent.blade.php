@@ -26,7 +26,11 @@
                @foreach($events as $event)
                 <tr>
                     <td>{{$event->id}}</td>
-                    <td><img src="{{asset('image')}}/{{$event->image}}" alt="" width="100" class="img-fluid"></td>
+                    <td>
+                        @if ($event->image)
+                            <img src="{{ asset('storage/' . $event->image) }}" alt="{{ $event->name }}">
+                        @endif
+                    </td>
                     <td>{{$event->name}}</td>
                     <td>{{$event->description}}</td>
                     <td>{{$event->organization}}</td>
@@ -35,7 +39,6 @@
                     <td>{{$event->end}}</td>
                     <td>{{$event->time}}</td>
                     <td>{{$event->seat}}</td>
-                    <td>{{$event->image}}</td>
                     <td><a href="{{route('editEvent',['id'=>$event->id])}}" class="btn btn-warning btn-xs">Edit</a>&nbsp;
                     <a href="{{route('deleteEvent',['id'=>$event->id])}}" class="btn btn-danger btn-xs" onClick="return confirm('Are you sure delete?')">Delete</a></td>
                 </tr>

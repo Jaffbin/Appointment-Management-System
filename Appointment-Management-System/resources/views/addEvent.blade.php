@@ -47,8 +47,8 @@
 				<input class="form-control" type="number" id="seat" name="seat" min="0" required>
             </div>
             <div class="form-group">
-				<label for="poster">Poster</label>
-				<input class="form-control" type="file" id="poster" name="poster" >
+				<label for="image">Poster</label>
+				<input class="form-control" type="file" id="image" name="image" >
             </div>
 
             <button type="submit" class="btn btn-primary">Add New</button>            

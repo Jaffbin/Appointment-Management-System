@@ -55,32 +55,34 @@
             </div>
         </div>
 
-        <!-- Upcoming Events Preview -->
         <div class="bg-white rounded-lg shadow-md p-6">
             <h2 class="text-2xl font-semibold mb-4">Upcoming Events</h2>
             <div class="overflow-x-auto">
-                <table class="min-w-full table-auto">
-                    <thead>
-                        <tr class="bg-gray-50">
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Title</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Time</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody class="bg-white divide-y divide-gray-200">
-                        @php
-                            $events = DB::table('events')->where('id', Auth::id())->orderBy('start', 'asc')->get();
-                        @endphp
-                    @foreach ($events as $event)
+            <table class="min-w-full table-auto">
+                <thead>
+                <tr class="bg-gray-50">
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Title</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Time</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                </tr>
+                </thead>
+                <tbody class="bg-white divide-y divide-gray-200">
+                @php
+                    $events = DB::table('events')
+                    ->where('id', Auth::id())
+                    ->orderBy('start', 'asc')
+                    ->limit(3)
+                    ->get();
+                @endphp
+                @foreach ($events as $event)
             <tr>
-                <td class="px-6 py-4 whitespace-nowrap text-sm">{{ $event->name }}</td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm">{{ $event->start }}</td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm">{{ $event->time }}</td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                    <a href="{{ route('editEvent', $event->id) }}" class="text-blue-600 hover:text-blue-900 mr-3">Edit</a>
-                    <a href="{{ route('deleteEvent', $event->id) }}" class="text-red-600 hover:text-red-900">Cancel</a>
-                </td>
+            <td class="px-6 py-4 whitespace-nowrap text-sm">{{ $event->name }}</td>
+            <td class="px-6 py-4 whitespace-nowrap text-sm">{{ $event->start }}</td>
+            <td class="px-6 py-4 whitespace-nowrap text-sm">{{ $event->time }}</td>
+            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                <a href="#" class="text-red-600 hover:text-red-900">Join</a>
+            </td>
             </tr>
         @endforeach
 

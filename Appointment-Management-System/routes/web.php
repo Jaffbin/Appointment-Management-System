@@ -65,25 +65,4 @@ Route::post('/logout', function () {
     return redirect('/');
 })->name('logout');
 
-Route::post('/joinEvent',[App\Http\Controllers\eventController::class,'addCart'])->name('joinEvent');
-
-/*  Route::get('/showEvent',[App\Http\Controllers\ProductController::class,'show'])->name('showEvent');
-
- Route::get('/editEvent/{id}',[App\Http\Controllers\ProductController::class,'edit'])->name('editEvent');
- 
- Route::post('/updateEvent',[App\Http\Controllers\ProductController::class,'update'])->name('updateEvent');
-
- Route::get('/deleteEvent/{id}',[App\Http\Controllers\ProductController::class,'delete'])->name('deleteEvent');
-
- Route::post('/searchEvent',[App\Http\Controllers\ProductController::class,'searchEvent'])->name('searchEvent');
-
- 
-
- 
-
- Route::get('/myEvent',[App\Http\Controllers\CartController::class,'view'])->name('myCart');
-
- Route::post('/checkout', [App\Http\Controllers\PaymentController::class, 'paymentPost'])->name('payment.post');
- 
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home'); */
+Route::post('/joinEvent',[App\Http\Controllers\eventController::class,'joinEvent'])->name('joinEvent');
