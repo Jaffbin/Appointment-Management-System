@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layout')
 
 @section('content')
 <div class="container">
@@ -28,7 +28,7 @@
                         <div class="row mb-3">
                             <label for="date" class="col-md-4 col-form-label text-md-end">{{ __('Birth Date') }}</label>
                             <div class="col-md-6">
-                                <input id="date" type="date" class="form-control @error('date') is-invalid @enderror" name="date" value="{{ old('date') }}" required autocomplete="date" autofocus>
+                                <input id="birthdate" type="date" class="form-control @error('date') is-invalid @enderror" name="birthdate" value="{{ old('date') }}" required autocomplete="date" autofocus>
 
                                 @error('date')
                                     <span class="invalid-feedback" role="alert">
@@ -42,7 +42,7 @@
                             <label for="phone" class="col-md-4 col-form-label text-md-end">{{ __('Phone Number') }}</label>
 
                             <div class="col-md-6">
-                                <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" required autocomplete="phone" autofocus>
+                                <input id="phonenumber" type="text" class="form-control @error('phone') is-invalid @enderror" name="phonenumber" value="{{ old('phone') }}" required autocomplete="phone" autofocus>
 
                                 @error('phone')
                                     <span class="invalid-feedback" role="alert">

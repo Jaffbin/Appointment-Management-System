@@ -25,9 +25,22 @@ Route::get('/myEvent', function () {
 Route::get('/yourEvent', function () {
     return view('yourEvent');
 });
+Route::get('/home', function () {
+    return view('home');
+});
+
+Route::get('/profile', function () {
+    return view('profile');
+});
+
+
 Route::get('/addEvent', function () {return view('addEvent');});
 
-Route::post('/addEvent/store', [App\Http\Controllers\EventController::class,'add'])->name('addEvent');
+Route::get('/home', [App\Http\Controllers\EventController::class,'home'])->name('home');
+
+Route::get('/profile', [App\Http\Controllers\EventController::class,'profile'])->name('profile');
+
+Route::post('/addEvent', [App\Http\Controllers\EventController::class,'add'])->name('addEvent');
 
 Route::get('/myEvent', [App\Http\Controllers\EventController::class,'show'])->name('myEvent');
 
@@ -38,6 +51,8 @@ Route::get('/editEvent/{id}',[App\Http\Controllers\EventController::class,'edit'
 Route::get('/deleteEvent/{id}',[App\Http\Controllers\EventController::class,'delete'])->name('deleteEvent');
 
 Route::get('/eventDetail/{id}',[App\Http\Controllers\eventController::class,'detail'])->name('eventDetail');
+
+Auth::routes();
 
 Route::post('/joinEvent',[App\Http\Controllers\eventController::class,'addCart'])->name('joinEvent');
 
@@ -59,6 +74,5 @@ Route::post('/joinEvent',[App\Http\Controllers\eventController::class,'addCart']
 
  Route::post('/checkout', [App\Http\Controllers\PaymentController::class, 'paymentPost'])->name('payment.post');
  
-Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home'); */

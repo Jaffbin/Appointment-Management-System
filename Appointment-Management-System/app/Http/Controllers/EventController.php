@@ -5,11 +5,28 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use App\Models\Event;
+use App\Models\User;
+use Auth;
 
 
 
 class EventController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
+
+    public function home(){
+        return view('home');
+    }
+
+    public function profile()
+    {
+        $user = auth()->user(); // Get the currently authenticated user
+
+        return view('profile', compact('user'));
+    }
+
     public function add(){
         $r=request();
         $addEvent=Event::create([
