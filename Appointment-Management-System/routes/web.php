@@ -40,6 +40,10 @@ Route::get('/home', [App\Http\Controllers\EventController::class,'home'])->name(
 
 Route::get('/profile', [App\Http\Controllers\EventController::class,'profile'])->name('profile');
 
+Route::get('/editProfile', [App\Http\Controllers\EventController::class, 'editProfile'])->name('editProfile');
+
+Route::post('/updateProfile', [App\Http\Controllers\EventController::class, 'updateProfile'])->name('updateProfile');
+
 Route::post('/addEvent', [App\Http\Controllers\EventController::class,'add'])->name('addEvent');
 
 Route::get('/myEvent', [App\Http\Controllers\EventController::class,'show'])->name('myEvent');

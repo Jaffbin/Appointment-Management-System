@@ -45,7 +45,7 @@
                             </tr>
                             <tr>
                                 <th></th>
-                                <td class="text-right"><a href="" class="btn btn-warning btn-xs">Edit</a>&nbsp;<td>
+                                <td class="text-right"><a href="{{route('editProfile')}}" class="btn btn-warning btn-xs">Edit</a>&nbsp;</td>
                             </tr>
                             </table>
                     </div>
