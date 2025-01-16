@@ -5,6 +5,13 @@
     <div class="col-sm-6">
         <br><br>
         <h3>Add New Event</h3>
+
+        @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+
         <form action="{{route('addEvent')}}" method="post" enctype='multipart/form-data' >
             @csrf
             <div class="form-group">
@@ -13,7 +20,7 @@
             </div>
             <div class="form-group">
 				<label for="eventDescription">Description</label>
-				<input class="form-control" type="text" id="eventDescription" name="eventDescription" required>
+				<textarea class="form-control" type="text" id="eventDescription" name="eventDescription" required></textarea>
             </div>
             <div class="form-group">
 				<label for="organization">Organization</label>

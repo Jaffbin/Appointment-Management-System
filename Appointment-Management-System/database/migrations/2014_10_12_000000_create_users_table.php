@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
+            $table->string('user_id',36)->unique();
             $table->string('name');
             $table->date('birthdate');
             $table->string('phonenumber')->unique();
@@ -24,6 +25,7 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+            
         });
     }
 

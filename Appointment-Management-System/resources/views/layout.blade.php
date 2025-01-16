@@ -33,9 +33,9 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="{{ route('addEvent') }}">Add Event</a>
-          <a class="dropdown-item" href="{{ route('myEvent')}}">My Event</a>
+          <a class="dropdown-item" href="{{route('showAllEvent')}}">All Event</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Profile</a>
+          <a class="dropdown-item" href="#{{ route('myEvent')}}">My Event</a>
         </div>
       </li>      
     </ul>
@@ -46,12 +46,6 @@
     </form>&nbsp;
     
     @guest
-    <button type="button" class="btn btn-success">
-      My Cart
-    </button>
-    @else
-    
-     <a href="" class="btn btn-success">My Cart<span class="badge bg-danger"></span></a>
 
      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
     @csrf
@@ -71,49 +65,11 @@
   <div class="container p-4">
     
 
-    <!-- Section: Form -->
-    <section class="">
-      <form action="">
-        <!--Grid row-->
-        <div class="row d-flex justify-content-center">
-          <!--Grid column-->
-          <div class="col-auto">
-            <p class="pt-2">
-              <strong>Sign up for our newsletter</strong>
-            </p>
-          </div>
-          <!--Grid column-->
-
-          <!--Grid column-->
-          <div class="col-md-5 col-12">
-            <!-- Email input -->
-            <div class="form-outline form-white mb-4">
-              <input type="email" id="form5Example2" class="form-control" />
-              <label class="form-label" for="form5Example2">Email address</label>
-            </div>
-          </div>
-          <!--Grid column-->
-
-          <!--Grid column-->
-          <div class="col-auto">
-            <!-- Submit button -->
-            <button type="submit" class="btn btn-outline-light mb-4">
-              Subscribe
-            </button>
-          </div>
-          <!--Grid column-->
-        </div>
-        <!--Grid row-->
-      </form>
-    </section>
-    <!-- Section: Form -->
 
     <!-- Section: Text -->
     <section class="mb-4">
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt distinctio earum
-        repellat quaerat voluptatibus placeat nam, commodi optio pariatur est quia magnam
-        eum harum corrupti dicta, aliquam sequi voluptate quas.
+      MyEvent aims to facilitate the management and promotion of Non-Profit Organization（NPOs） events in Malaysia and provide a central collaboration channel for organizations and participants. This website provides suggested event information settings, simplifies the participant application process and facilitates Malaysian NPOs to fulfill their mission.
       </p>
     </section>
     <!-- Section: Text -->

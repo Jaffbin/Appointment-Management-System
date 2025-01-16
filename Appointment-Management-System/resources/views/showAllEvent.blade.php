@@ -36,8 +36,7 @@
                     <td>{{$event->time}}</td>
                     <td>{{$event->seat}}</td>
                     <td>{{$event->image}}</td>
-                    <td><a href="{{route('editEvent',['id'=>$event->id])}}" class="btn btn-warning btn-xs">Edit</a>&nbsp;
-                    <a href="{{route('deleteEvent',['id'=>$event->id])}}" class="btn btn-danger btn-xs" onClick="return confirm('Are you sure delete?')">Delete</a></td>
+                    <td><a href="" class="btn btn-warning btn-xs">Join</a>&nbsp;
                 </tr>
                 @endforeach
             </tbody>

@@ -18,9 +18,12 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name', 'birthdate', 'phonenumber', 'job', 'organization', 'email', 'password'
+        'user_id','name', 'birthdate', 'phonenumber', 'job', 'organization', 'email', 'password'
     ];
-
+    public function events()
+    {
+        return $this->hasMany(Event::class);
+    }
     /**
      * The attributes that should be hidden for serialization.
      *

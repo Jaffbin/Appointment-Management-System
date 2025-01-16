@@ -48,6 +48,8 @@ Route::post('/addEvent', [App\Http\Controllers\EventController::class,'add'])->n
 
 Route::get('/myEvent', [App\Http\Controllers\EventController::class,'show'])->name('myEvent');
 
+Route::get('/showAllEvent', [App\Http\Controllers\EventController::class,'showAll'])->name('showAllEvent');
+
 Route::post('/updateEvent',[App\Http\Controllers\EventController::class,'update'])->name('updateEvent');
 
 Route::get('/editEvent/{id}',[App\Http\Controllers\EventController::class,'edit'])->name('editEvent');

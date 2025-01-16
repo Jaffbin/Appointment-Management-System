@@ -58,27 +58,47 @@ class EventController extends Controller
         return redirect()->route('profile')->with('success', 'Profile updated successfully.');
     }
 
-    public function add(){
-        $r=request();
-        $addEvent=Event::create([
-            'name'=>$r->eventName,
-            'description'=>$r->eventDescription,
-            'organization'=>$r->organization,
-            'place'=>$r->eventPlace,
-            'start'=>$r->eventStart,
-            'end'=>$r->eventEnd,
-            'time'=>$r->eventTime,
-            'seat'=>$r->seat,
-            'image'=>'poster.jpg',
-
+    public function add(Request $request){
+        $request->validate([
+            'eventName' => 'required|string|max:255',
+            'eventDescription' => 'required|string',
+            'organization' => 'required|string|max:255',
+            'eventPlace' => 'required|string|max:255',
+            'eventStart' => 'required|date',
+            'eventEnd' => 'required|date',
+            'eventTime' => 'required',
+            'seat' => 'required|integer|min:0',
+            'poster' => 'nullable|file|image|max:2048',
         ]);
-        return redirect()->route('myEvent');
+
+        $event = new Event([
+            'name' => $request->eventName,
+            'description' => $request->eventDescription,
+            'organization' => $request->organization,
+            'place' => $request->eventPlace,
+            'start' => $request->eventStart,
+            'end' => $request->eventEnd,
+            'time' => $request->eventTime,
+            'seat' => $request->seat,
+            'image' => $request->file('poster') ? $request->file('poster')->store('posters', 'public') : 'poster.jpg',
+        ]);
+        $event->user()->associate(auth()->user());
+        $event->save();
+
+        return redirect()->route('myEvent')->with('success', 'Event added successfully.');
     }
 
     public function show(){
-        $viewEvent=Event::all();
+        $viewEvent=DB::table('events')->where('events.user_id','=',Auth::id())->get();
+
         return view('myEvent')->with('events', $viewEvent);
     }
+    public function showAll(){
+        $viewEvent=Event::all();
+        return view('showAllEvent')->with('events', $viewEvent);
+    }
+    
+
     public function edit($id){
         $event=Event::all()->where('id',$id);
         //select*fromevents where id='$id'

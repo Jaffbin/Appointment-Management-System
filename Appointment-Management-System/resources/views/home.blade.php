@@ -14,7 +14,7 @@
 <body class="bg-gray-50">
     <!-- Main Content -->
     <div class="container mx-auto px-4 py-8">
-        <h1 class="text-3xl font-bold text-gray-800 mb-8">Welcome to Event Management System</h1>
+        <h1 class="text-2xl font-bold text-gray-800 mb-8">Welcome to Malaysian Event Management and Participation System (MyEvent)</h1>
         
         <!-- Quick Actions Cards -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
@@ -39,7 +39,7 @@
                 </div>
                 <h2 class="text-xl font-semibold mb-2">View All Events</h2>
                 <p class="text-gray-600 mb-4">See all scheduled Events in calendar view.</p>
-                <a href="#" class="text-green-500 hover:text-green-600 font-medium">View All →</a>
+                <a href="{{route('showAllEvent')}}" class="text-green-500 hover:text-green-600 font-medium">View All →</a>
             </div>
 
             <!-- My Events Card -->
@@ -83,7 +83,7 @@
                 </td>
             </tr>
         @endforeach
-        
+
                     </tbody>
                 </table>
             </div>
