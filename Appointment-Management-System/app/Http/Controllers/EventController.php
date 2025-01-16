@@ -7,6 +7,7 @@ use DB;
 use App\Models\Event;
 use App\Models\User;
 use App\Models\eventuser;
+use Illuminate\Support\Facades\Storage;
 use Auth;
 
 
@@ -71,6 +72,7 @@ class EventController extends Controller
             'seat' => 'required|integer|min:0',
             'image' => 'nullable|file|image|max:2048',
         ]);
+        
 
         $event = new Event([
             'name' => $request->eventName,

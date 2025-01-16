@@ -28,7 +28,7 @@
                     <td>{{$event->id}}</td>
                     <td>
                         @if ($event->image)
-                            <img src="{{ asset('storage/' . $event->image) }}" alt="{{ $event->name }}">
+                            <img src="{{ asset('storage/' . $event->image) }}" alt="{{ $event->name }}" style="max-width: 100px; max-height: 100px;">
                         @endif
                     </td>
                     <td>{{$event->name}}</td>

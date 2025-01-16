@@ -8,44 +8,46 @@
         <form action="{{route('updateEvent')}}" method="POST" enctype="multipart/form-data">
             @CSRF
             @foreach($events as $event)
-            <div class="form-group">
-                <img src="" alt="" width="100" class="img-fluid"><br>
-            <label for="eventname">Event Name</label>
-            <input type="hidden" name="id" value="{{$event->id}}">
-            <input class="form-control" type="text" id="eventName" name="eventName" required value="{{$event->name}}">           
-            </div>
-            <div class="form-group">
-            <label for="eventDescription">Description</label>
-            <input class="form-control" type="text" id="eventDescription" name="eventDescription" required value="{{$event->description}}">
-            </div>
-            <div class="form-group">
-            <label for="eventDescription">Organization</label>
-            <input class="form-control" type="text" id="organization" name="organization" required value="{{$event->organization}}">
-            </div>
-            <div class="form-group">
-            <label for="eventPrice">Location</label>
-            <input class="form-control" type="text" id="eventPlace" name="eventPlace" required value="{{$event->place}}">  
-            </div>
-            <div class="form-group">
-            <label for="eventQuantity">Start Date</label>
-            <input class="form-control" type="date" id="eventStart" name="eventStart" min="0" required value="{{$event->start}}">
-            </div>
-            <div class="form-group">
-            <label for="eventQuantity">End Date</label>
-            <input class="form-control" type="date" id="eventEnd" name="eventEnd" min="0" required value="{{$event->end}}">
-            </div>
-            <div class="form-group">
-            <label for="eventQuantity">Time</label>
-            <input class="form-control" type="time" id="eventTime" name="eventTime" min="0" required value="{{$event->time}}">
-            </div>
-            <div class="form-group">
-            <label for="eventImage">Seat</label>
-            <input class="form-control" type="number" id="seat" name="seat" min="0" required value="{{$event->seat}}">
-            </div>
-            <div class="form-group">
-            <label for="eventImage">Image</label>
-            <input class="form-control" type="file" id="eventImage" name="eventImage" >
-            </div>
+            <input type="hidden" name="id" value="{{ $event->id }}">
+        <div class="form-group">
+            <label for="eventName">Event Name</label>
+            <input type="text" class="form-control" id="eventName" name="eventName" value="{{ $event->name }}" required>
+        </div>
+        <div class="form-group">
+            <label for="eventDescription">Event Description</label>
+            <textarea class="form-control" id="eventDescription" name="eventDescription" required>{{ $event->description }}</textarea>
+        </div>
+        <div class="form-group">
+            <label for="organization">Organization</label>
+            <input type="text" class="form-control" id="organization" name="organization" value="{{ $event->organization }}" required>
+        </div>
+        <div class="form-group">
+            <label for="eventPlace">Event Place</label>
+            <input type="text" class="form-control" id="eventPlace" name="eventPlace" value="{{ $event->place }}" required>
+        </div>
+        <div class="form-group">
+            <label for="eventStart">Start Date</label>
+            <input type="date" class="form-control" id="eventStart" name="eventStart" value="{{ $event->start }}" required>
+        </div>
+        <div class="form-group">
+            <label for="eventEnd">End Date</label>
+            <input type="date" class="form-control" id="eventEnd" name="eventEnd" value="{{ $event->end }}" required>
+        </div>
+        <div class="form-group">
+            <label for="eventTime">Time</label>
+            <input type="time" class="form-control" id="eventTime" name="eventTime" value="{{ $event->time }}" required>
+        </div>
+        <div class="form-group">
+            <label for="seat">Seat</label>
+            <input type="number" class="form-control" id="seat" name="seat" value="{{ $event->seat }}" min="0" required>
+        </div>
+        <div class="form-group">
+            <label for="image">Poster</label>
+            <input type="file" class="form-control" id="image" name="image">
+            @if ($event->image)
+                <img src="{{ asset('storage/' . $event->image) }}" alt="{{ $event->name }}" width="100">
+            @endif
+        </div>
             <button type="submit" class="btn btn-primary">Update</button>
             @endforeach            
         </form>
